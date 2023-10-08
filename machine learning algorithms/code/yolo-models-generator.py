@@ -10,7 +10,7 @@ model = YOLO(model_name+'.pt')
 results = model.train(
    data='C:\\Users\\cchan\\computer-vision\\machine learning algorithms\\dataset\\data.yaml',
    imgsz=640,
-   epochs=10,
+   epochs=100,
    batch=16,
    name='{}_custom'.format(model_name)
 )
