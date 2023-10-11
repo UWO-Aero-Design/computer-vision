@@ -1,24 +1,17 @@
-*no change in baseline memory usage by closing other processes.*
-*barebones version (no profiler, no picture taking) still crashes on pi zero through segmentation fault*
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-     6    242.4 MiB    242.4 MiB           1   @profile
-     7                                         def inference_with_memory_profile():
-     8                                             # Load the pre-trained YOLO model
-     9    293.1 MiB     50.7 MiB           1       model = YOLO('yolov8s.pt')
-    10
-    11                                             # Capture an image and save it
-    12    293.1 MiB      0.0 MiB           1       image_file = "test_red.jpg"
-    13
-    14    293.2 MiB      0.1 MiB           1       image = Image.open('test_red.jpg')
-    15    293.2 MiB      0.0 MiB           1       print('type of image: ', str(type(image)))
-    16    415.9 MiB    122.7 MiB           1       results = model(image)
-    17                                             # Show the results
-    18    430.2 MiB      0.0 MiB           2       for r in results:
-    19    415.9 MiB      0.0 MiB           1           im_array = r.plot()  # plot a BGR numpy array of predictions
-    20    430.2 MiB     14.3 MiB           1           im = Image.fromarray(im_array[..., ::-1])  # RGB PIL image
-    21
-    22                                             # Display final output for multiple color detection opencv python
-    23    430.2 MiB      0.0 MiB           1       image_path = 'output_image.png'
-    24    430.2 MiB      0.0 MiB           1       print('type', str(type(image)))
-    25    430.9 MiB      0.7 MiB           1       image.save(image_path)
+     7    242.1 MiB    242.1 MiB           1   @profile
+     8                                         def inference_with_memory_profile():
+     9                                             # Load the pre-trained YOLO model
+    10    261.3 MiB     19.2 MiB           1       model = YOLO('yolov8n.pt')
+    11
+    12                                             # Capture an image and save it
+    13    261.3 MiB      0.0 MiB           1       image_file = "test_red.jpg"
+    14
+    15    261.4 MiB      0.1 MiB           1       image = Image.open('test_red.jpg')
+    16    261.4 MiB      0.0 MiB           1       print('type of image: ', str(type(image)))
+    17    261.4 MiB      0.0 MiB           1       inference_start_time = time.time()
+    18    358.1 MiB     96.7 MiB           1       results = model(image)
+    19    358.1 MiB      0.0 MiB           1       inference_end_time = time.time()
+    20    358.1 MiB      0.0 MiB           1       inference_time = inference_end_time - inference_start_time
+    21    358.1 MiB      0.0 MiB           1       print('the total inference time is: ', str(inference_time))

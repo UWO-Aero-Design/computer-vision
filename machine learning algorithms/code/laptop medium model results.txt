@@ -1,0 +1,17 @@
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+     7    242.1 MiB    242.1 MiB           1   @profile
+     8                                         def inference_with_memory_profile():
+     9                                             # Load the pre-trained YOLO model
+    10    360.9 MiB    118.8 MiB           1       model = YOLO('yolov8m.pt')
+    11
+    12                                             # Capture an image and save it
+    13    360.9 MiB      0.0 MiB           1       image_file = "test_red.jpg"
+    14
+    15    361.0 MiB      0.1 MiB           1       image = Image.open('test_red.jpg')
+    16    361.0 MiB      0.0 MiB           1       print('type of image: ', str(type(image)))
+    17    361.0 MiB      0.0 MiB           1       inference_start_time = time.time()
+    18    511.7 MiB    150.7 MiB           1       results = model(image)
+    19    511.7 MiB      0.0 MiB           1       inference_end_time = time.time()
+    20    511.7 MiB      0.0 MiB           1       inference_time = inference_end_time - inference_start_time
+    21    511.7 MiB      0.0 MiB           1       print('the total inference time is: ', str(inference_time))
